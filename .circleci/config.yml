@@ -1,0 +1,29 @@
+version: 2.1
+
+jobs:
+  build-and-publish:
+    machine:
+      image: ubuntu-1604:201903-01
+      docker_layer_caching: true
+    working_directory: ~/docker-ci-k8s
+    steps:
+      - checkout
+      - run:
+          name: Login to Docker Hub
+          command: echo "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin
+      - run:
+          name: Build image
+          command: docker build --build-arg DOCKER_VERSION=${DOCKER_VERSION:-19.03.11} --build-arg KUBECTL_VERSION=${KUBECTL_VERSION:-1.18.3} --build-arg HELM_VERSION=${HELM_VERSION:-3.2.2} -t verdigristech/ci-k8s:latest .
+      - run:
+          name: Publish to Docker Hub
+          command: docker push verdigristech/ci-k8s:latest
+
+workflows:
+  version: 2
+  build-and-publish:
+    jobs:
+      - build-and-publish:
+          context: common
+          filters:
+            branches:
+              only: master
