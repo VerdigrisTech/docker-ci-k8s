@@ -13,7 +13,7 @@ RUN curl -fsSL https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux6
 RUN chmod +x ./kubectl ./jq
 
 FROM alpine:latest
-RUN apk --no-cache add ca-certificates curl git
+RUN apk --no-cache add ca-certificates curl git ssh
 COPY --from=builder /tmp/docker/docker /usr/bin/
 COPY --from=builder /tmp/kubectl /usr/bin/
 COPY --from=builder /tmp/linux-amd64/helm /usr/bin/
