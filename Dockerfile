@@ -13,7 +13,7 @@ RUN curl -fsSLO https://storage.googleapis.com/kubernetes-release/release/v${KUB
 RUN curl -fsSL https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz | tar xvz
 RUN curl -fsSL https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64 -o yq
 RUN curl -fsSL https://github.com/stedolan/jq/releases/download/jq-${JQ_VERSION}/jq-linux64 -o jq
-RUN chmod +x ./kubectl ./jq
+RUN chmod +x ./kubectl ./yq ./jq
 
 FROM alpine:latest
 RUN apk --no-cache add ca-certificates curl git openssh
