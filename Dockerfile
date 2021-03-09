@@ -16,10 +16,11 @@ RUN curl -fsSL https://github.com/stedolan/jq/releases/download/jq-${JQ_VERSION}
 RUN chmod +x ./kubectl ./yq ./jq
 
 FROM alpine:latest
-RUN apk --no-cache add ca-certificates curl git openssh
+RUN apk --no-cache add ca-certificates curl git openssh python3
 COPY --from=builder /tmp/docker/docker /usr/bin/
 COPY --from=builder /tmp/kubectl /usr/bin/
 COPY --from=builder /tmp/linux-amd64/helm /usr/bin/
 COPY --from=builder /tmp/yq /usr/bin/
 COPY --from=builder /tmp/jq /usr/bin/
+RUN ln -s /usr/bin/python3 /usr/bin/python
 CMD [ "/bin/sh" ]
