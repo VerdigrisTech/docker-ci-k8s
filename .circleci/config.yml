@@ -15,10 +15,10 @@ jobs:
           name: Build image
           command: |
             docker build \
-              --build-arg DOCKER_VERSION=${DOCKER_VERSION:-19.03.11} \
-              --build-arg KUBECTL_VERSION=${KUBECTL_VERSION:-1.18.3} \
-              --build-arg HELM_VERSION=${HELM_VERSION:-3.2.2} \
-              --build-arg YQ_VERSION=${YQ_VERSION:-3.3.2} \
+              --build-arg DOCKER_VERSION=${DOCKER_VERSION:-20.10.8} \
+              --build-arg KUBECTL_VERSION=${KUBECTL_VERSION:-1.21.3} \
+              --build-arg HELM_VERSION=${HELM_VERSION:-3.6.3} \
+              --build-arg YQ_VERSION=${YQ_VERSION:-4.12.0} \
               --build-arg JQ_VERSION=${JQ_VERSION:-1.6} \
               -t verdigristech/ci-k8s:latest .
       - run:
