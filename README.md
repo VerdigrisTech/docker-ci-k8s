@@ -8,10 +8,11 @@ Collection of Kubernetes toolchain for CI environment.
 
 Current `latest` tag contains the following binaries:
 
-- docker: v19.03.11
-- kubectl: v1.18.3
-- helm: v3.2.2
+- docker: v20.10.8
+- kubectl: v1.21.3
+- helm: v3.6.3
 - jq: v1.6
+- yq: v4.12.0
 
 [docker-image-version-badge]: https://img.shields.io/docker/v/verdigristech/ci-k8s?sort=semver
 [docker-hub-repo]: https://hub.docker.com/r/verdigristech/ci-k8s
